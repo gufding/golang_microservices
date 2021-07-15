@@ -10,6 +10,7 @@ import (
 )
 
 func GetUser(resp http.ResponseWriter, req *http.Request) {
+	// Check that the user ID is a number
 	userId, err := strconv.ParseInt(req.URL.Query().Get("user_id"), 10, 64)
 	if err != nil {
 		apiErr := &utils.ApplicationError{
@@ -23,6 +24,7 @@ func GetUser(resp http.ResponseWriter, req *http.Request) {
 		return
 	}
 
+	// Get the user using the passed user ID
 	user, apiErr := services.GetUser(userId)
 	if apiErr != nil {
 		jsonValue, _ := json.Marshal(apiErr)

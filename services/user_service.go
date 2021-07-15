@@ -6,5 +6,6 @@ import (
 )
 
 func GetUser(UserId int64) (*domain.User, *utils.ApplicationError) {
+	// Call the domain to get the user
 	return domain.GetUser(UserId)
 }
